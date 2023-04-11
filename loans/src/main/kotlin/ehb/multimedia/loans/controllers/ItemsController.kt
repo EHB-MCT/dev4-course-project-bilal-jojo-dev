@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("items")
 class ItemsController {
 
-    @GetMapping()
-    fun getItems(): String {
-        return "Test"
+    @GetMapping("")
+    fun getAllItems(): String {
+        return "This gets all Items"
     }
 
-    @GetMapping("item")
+    @GetMapping("item/{id}")
     fun getItem(): String {
-        return "This is on the Jojo branch";
+        return "This gets a specific Item";
     }
 
 }
