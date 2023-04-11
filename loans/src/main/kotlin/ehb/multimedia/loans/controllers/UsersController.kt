@@ -13,4 +13,9 @@ class UsersController {
         return "This is the users class"
     }
 
+    @GetMapping("/user")
+    fun getUser(): String {
+        return "This is on the features branch"
+    }
+
 }
