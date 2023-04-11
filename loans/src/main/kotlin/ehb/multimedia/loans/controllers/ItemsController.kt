@@ -14,4 +14,9 @@ class ItemsController {
         return "Test"
     }
 
+    @GetMapping("item")
+    fun getItem(): String {
+        return "This is on the develop branch";
+    }
+
 }
