@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f953e7fd-08e1-4c3a-96ae-84b7c2bc6b98" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/loans/src/main/kotlin/ehb/multimedia/loans/models/Loan.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/loans/src/main/kotlin/ehb/multimedia/loans/models/Reminder.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/loans/src/main/kotlin/ehb/multimedia/loans/models/User.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/loans/src/main/kotlin/ehb/multimedia/loans/models/copyOfItem.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/loans/src/main/kotlin/ehb/multimedia/loans/models/item.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loans/src/main/kotlin/ehb/multimedia/loans/controllers/ItemsController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/loans/src/main/kotlin/ehb/multimedia/loans/controllers/ItemsController.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/loans/src/main/kotlin/ehb/multimedia/loans/models/ReminderDayAfter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/loans/src/main/kotlin/ehb/multimedia/loans/models/ReminderDayBefore.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/loans/src/main/kotlin/ehb/multimedia/loans/models/ReminderLvl1.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +50,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "spring.configuration.checksum": "f806527a4b4ecb554edad98174334a70",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -74,7 +71,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1681222164785</updated>
-      <workItem from="1681222166752" duration="5085000" />
+      <workItem from="1681222166752" duration="6060000" />
+      <workItem from="1681310052054" duration="429000" />
     </task>
     <servers />
   </component>
