@@ -1,7 +1,7 @@
 package ehb.multimedia.loans.models
 
 class User {
-    var id: Double = 0.0
+    var id: Int = 0
     var firstName: String = ""
     var lastName: String = ""
     var email: String = ""
