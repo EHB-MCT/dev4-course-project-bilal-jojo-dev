@@ -13,6 +13,5 @@ class copyOfItem {
     val id: Int = 0
     val serial: Int = 0
     val status: String = ""
-    val lastLoaner: String = ""
     val remarks: String = ""
 }

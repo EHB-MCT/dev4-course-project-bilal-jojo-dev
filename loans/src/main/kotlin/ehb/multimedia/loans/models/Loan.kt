@@ -12,7 +12,7 @@ class Loan {
     @Id
     @GeneratedValue
     val id: Int = 0
-    val studentId: Int = 0
+    val userId: Int = 0
     var date: Date = Date()
     var expirationDate: Date = Date()
 }
