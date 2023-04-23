@@ -1,7 +1,18 @@
 package ehb.multimedia.loans.models
 
+import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.Id
+import jakarta.persistence.Table
+
+
+@Entity
+@Table(name = "users")
 class User {
-    var id: Int = 0
+    @Id
+    @GeneratedValue
+    var id: Long? = null
+
     var firstName: String = ""
     var lastName: String = ""
     var email: String = ""

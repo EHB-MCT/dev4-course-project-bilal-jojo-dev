@@ -1,25 +1,28 @@
 package ehb.multimedia.loans.controllers
 
+import ehb.multimedia.loans.models.User
+import ehb.multimedia.loans.services.UserService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("users")
 
 //set userRepository as class parameter
-class UsersController {
+class UsersController (val userService: UserService) {
 
-    // return type should be list User (model)
     @GetMapping("")
-    fun getUsers(): String {
-        return "This is the users class"
+    fun getAllUsers(): List<User> {
+        return userService.getUsers()
     }
 
-
-    @GetMapping("user/{id}")
-    fun getUser(): String {
-        return "This is on the features branch"
+    @PostMapping("")
+    fun saveUser(@RequestBody user: User): User {
+        return userService.saveUser(user)
     }
 
 }
+
