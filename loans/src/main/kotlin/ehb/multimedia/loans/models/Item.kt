@@ -7,7 +7,7 @@ import jakarta.persistence.Table
 
 @Entity
 @Table(name = "items")
-    class Item {
+class Item {
     @Id
     @GeneratedValue
     val id: Int = 0
