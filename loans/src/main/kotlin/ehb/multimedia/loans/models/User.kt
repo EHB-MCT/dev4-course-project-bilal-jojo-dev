@@ -11,8 +11,7 @@ import jakarta.persistence.Table
 class User {
     @Id
     @GeneratedValue
-    var id: Long? = null
-
+    var id: Int = 0
     var firstName: String = ""
     var lastName: String = ""
     var email: String = ""
