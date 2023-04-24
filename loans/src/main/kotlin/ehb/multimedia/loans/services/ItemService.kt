@@ -1,5 +1,6 @@
 package ehb.multimedia.loans.services
 
+import ehb.multimedia.loans.controllers.DatabaseController
 import ehb.multimedia.loans.models.Item
 import ehb.multimedia.loans.repositories.itemRepository
 import org.springframework.stereotype.Service
