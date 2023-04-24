@@ -14,7 +14,7 @@ object DatabaseController {
     private fun getConnection(): Connection {
         val connectionProps = Properties()
         val databaseName = credentials.databaseName
-        connectionProps["user"] = credentials.databaseName
+        connectionProps["user"] = credentials.databaseUser
         connectionProps["password"] = credentials.databasePassword
         Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance()
         return DriverManager.getConnection(
