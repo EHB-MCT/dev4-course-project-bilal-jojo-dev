@@ -1,6 +1,7 @@
 package ehb.multimedia.loans.controllers
 
 import ehb.multimedia.loans.dto.CreateItem
+import ehb.multimedia.loans.models.Credentials
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.ResultSet
@@ -8,24 +9,24 @@ import java.util.*
 
 object DatabaseController {
 
-    var con = getConnection("DEV4030", "86472935");
+    val credentials = Credentials()
 
-    private fun getConnection(username: String, password: String): Connection {
+    private fun getConnection(): Connection {
         val connectionProps = Properties()
-        val databaseName = username
-        connectionProps["user"] = username
-        connectionProps["password"] = password
+        val databaseName = credentials.databaseName
+        connectionProps["user"] = credentials.databaseUser
+        connectionProps["password"] = credentials.databasePassword
         Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance()
         return DriverManager.getConnection(
             "jdbc:" + "mysql" + "://" +
                     "dt5.ehb.be" +
                     ":" + "3306" + "/" +
-                    databaseName,
+                    credentials.databaseName,
             connectionProps)
     }
 
     fun getAllItems(): MutableList<CreateItem> {
-        val result = executeQuery(con, "SELECT * FROM items");
+        val result = executeQuery(getConnection(), "SELECT * FROM items");
         val items = mutableListOf<CreateItem>()
 
         while (result!!.next()) {
