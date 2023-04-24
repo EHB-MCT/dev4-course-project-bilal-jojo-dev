@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f953e7fd-08e1-4c3a-96ae-84b7c2bc6b98" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/loans/src/main/kotlin/ehb/multimedia/loans/models/ReminderDayAfter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/loans/src/main/kotlin/ehb/multimedia/loans/models/ReminderDayBefore.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/loans/src/main/kotlin/ehb/multimedia/loans/models/ReminderLvl1.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loans/src/main/kotlin/ehb/multimedia/loans/services/UserService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/loans/src/main/kotlin/ehb/multimedia/loans/services/UserService.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,21 +37,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/fawaz/OneDrive/Documents/GitHub/Dev4-exercises/dev4-s2-creational-patterns---v2-bilalfwz",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "spring.configuration.checksum": "f806527a4b4ecb554edad98174334a70",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/fawaz/OneDrive/Documents/GitHub/Dev4-exercises/dev4-s2-creational-patterns---v2-bilalfwz&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;f806527a4b4ecb554edad98174334a70&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="dev4-course-project-bilal-jojo-dev" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="dev4-course-project-bilal-jojo-dev" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LoansApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="loans" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ehb.multimedia.loans.LoansApplication" />
@@ -73,6 +83,7 @@
       <updated>1681222164785</updated>
       <workItem from="1681222166752" duration="6060000" />
       <workItem from="1681310052054" duration="429000" />
+      <workItem from="1682284438414" duration="28000" />
     </task>
     <servers />
   </component>
