@@ -6,7 +6,7 @@ import jakarta.persistence.Id
 import jakarta.persistence.Table
 import java.util.Date
 import java.util.StringJoiner
-
+/*
 @Entity
 @Table(name = "reminders")
 class Reminder {
@@ -16,4 +16,4 @@ class Reminder {
     val date: Date = Date()
     val message: String = ""
     val type: String = ""
-}
+}*/
