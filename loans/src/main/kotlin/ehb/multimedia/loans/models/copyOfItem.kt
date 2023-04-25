@@ -4,7 +4,7 @@ import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.Id
 import jakarta.persistence.Table
-
+/*
 @Entity
 @Table(name = "copiesOfItem")
 class copyOfItem {
@@ -14,4 +14,4 @@ class copyOfItem {
     val serial: Int = 0
     val status: String = ""
     val remarks: String = ""
-}
+}*/

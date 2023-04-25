@@ -1,16 +1,19 @@
 package ehb.multimedia.loans.models
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.Id
-import jakarta.persistence.Table
+import jakarta.persistence.*
 
 @Entity
 @Table(name = "items")
-class Item {
+data class Item(
     @Id
-    @GeneratedValue
-    val id: Int = 0
-    val name: String = ""
-    val description: String = ""
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Int = 0,
+    @Column(name = "name", nullable = false)
+    val name: String = "",
+    @Column(name = "brand", nullable = false)
+    val brand: String = "",
+    @Column(name = "serial", nullable = false)
+    val serial: Int = 0
+    ) {
+
     }

@@ -34,3 +34,5 @@ build/
 
 ### Credentials ###
 /src/main/kotlin/ehb/multimedia/loans/models/Credentials.kt
+
+/src/main/resources/application.properties
