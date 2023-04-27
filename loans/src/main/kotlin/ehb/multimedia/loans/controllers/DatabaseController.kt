@@ -1,17 +1,17 @@
 package ehb.multimedia.loans.controllers
 
 import ehb.multimedia.loans.dto.CreateItem
-import ehb.multimedia.loans.models.Credentials
+//import ehb.multimedia.loans.models.Credentials
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.ResultSet
 import java.util.*
 
-object DatabaseController {
+//object DatabaseController {
 
-    val credentials = Credentials()
+    //val credentials = Credentials()
 
-    private fun getConnection(): Connection {
+    /*private fun getConnection(): Connection {
         val connectionProps = Properties()
         val databaseName = credentials.databaseName
         connectionProps["user"] = credentials.databaseUser
@@ -49,4 +49,4 @@ object DatabaseController {
         return statement.executeQuery()
     }
 
-}
+} */
