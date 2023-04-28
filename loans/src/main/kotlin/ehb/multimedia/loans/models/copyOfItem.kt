@@ -1,17 +1,19 @@
 package ehb.multimedia.loans.models
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.Id
-import jakarta.persistence.Table
-/*
+import jakarta.persistence.*
+
 @Entity
-@Table(name = "copiesOfItem")
-class copyOfItem {
+@Table(name = "copies_of_item")
+data class copyOfItem(
     @Id
-    @GeneratedValue
-    val id: Int = 0
-    val serial: Int = 0
-    val status: String = ""
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Int = 0,
+    @Column(name = "serial")
+    val serial: Int = 0,
+    @Column(name = "status")
+    val status: String = "",
+    @Column(name = "remarks")
     val remarks: String = ""
-}*/
+) {
+
+}

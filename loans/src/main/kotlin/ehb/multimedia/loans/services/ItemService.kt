@@ -11,10 +11,6 @@ class ItemService (val itemRepository: itemRepository) {
 
     fun getItems(): List<Item> {
         return itemRepository.findAll()
-        //val items = DatabaseController.getAllItems()
-        /*for (item in items) {
-            println(item.name)
-        }*/
     }
 
     fun saveItem(item: Item): Item {
