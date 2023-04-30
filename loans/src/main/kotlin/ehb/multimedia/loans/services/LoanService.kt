@@ -10,6 +10,7 @@ import jakarta.persistence.EntityNotFoundException
 import org.springframework.stereotype.Service
 import java.time.ZoneId
 import java.sql.Date
+import java.time.LocalDate
 import java.util.*
 
 
@@ -23,16 +24,22 @@ class LoanService(val loanRepository: loanRepository, val userRepository: userRe
     }
 
     fun saveLoan(createLoan: CreateLoan): Loan {
-
+        // Valideren of de gebruiker en het item bestaan voordat je de lening opslaat
         val userExists = userRepository.existsById(createLoan.userId)
         val itemExists = itemRepository.existsById(createLoan.itemId)
 
         if (userExists && itemExists) {
+            val currentDate = Date()
+            val calendar = Calendar.getInstance()
+            calendar.time = currentDate
+            calendar.add(Calendar.DATE, 30)
+            val expirationDate = calendar.time
+
             val loan = Loan(
                 itemId = createLoan.itemId,
                 userId = createLoan.userId,
-                date = createLoan.date,
-                expirationDate = createLoan.expirationDate
+                date = currentDate,
+                expirationDate = expirationDate
             )
             return loanRepository.save(loan)
         } else {
