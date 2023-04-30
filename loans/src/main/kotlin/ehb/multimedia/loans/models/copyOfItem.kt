@@ -3,15 +3,18 @@ package ehb.multimedia.loans.models
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.Id
+import jakarta.persistence.JoinColumn
+import jakarta.persistence.ManyToOne
 import jakarta.persistence.Table
+
 /*
 @Entity
 @Table(name = "copiesOfItem")
-class copyOfItem {
+data class copyOfItem (
     @Id
     @GeneratedValue
-    val id: Int = 0
-    val serial: Int = 0
-    val status: String = ""
-    val remarks: String = ""
-}*/
+    var id: Int = 0,
+    var serial: Int = 0,
+    var status: String = "",
+    var remarks: String = "",
+        )*/

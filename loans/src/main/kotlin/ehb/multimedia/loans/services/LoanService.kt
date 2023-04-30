@@ -1,18 +1,10 @@
 package ehb.multimedia.loans.services
 import ehb.multimedia.loans.dto.CreateLoan
-import ehb.multimedia.loans.models.Item
 import ehb.multimedia.loans.models.Loan
-import ehb.multimedia.loans.models.User
 import ehb.multimedia.loans.repositories.itemRepository
 import ehb.multimedia.loans.repositories.loanRepository
 import ehb.multimedia.loans.repositories.userRepository
-import jakarta.persistence.EntityNotFoundException
 import org.springframework.stereotype.Service
-import java.time.ZoneId
-import java.sql.Date
-import java.util.*
-
-
 
 
 @Service

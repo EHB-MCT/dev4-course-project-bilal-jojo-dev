@@ -20,5 +20,3 @@ data class Loan(
     @Column(name = "expiration_date")
     val expirationDate: Date
 )
-
-

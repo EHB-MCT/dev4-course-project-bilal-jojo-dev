@@ -7,13 +7,13 @@ import jakarta.persistence.*
 data class Item(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int = 0,
+    var id: Int = 0,
     @Column(name = "name", nullable = false)
-    val name: String = "",
+    var name: String = "",
     @Column(name = "brand", nullable = false)
-    val brand: String = "",
-    @Column(name = "serial", nullable = false)
-    val serial: Int = 0
+    var brand: String = "",
+    /*@Column(name = "serial", nullable = false)
+    val serial: Int = 0*/
     ) {
 
     }
