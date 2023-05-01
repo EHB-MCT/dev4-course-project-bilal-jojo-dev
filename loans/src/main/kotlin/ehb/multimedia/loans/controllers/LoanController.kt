@@ -3,9 +3,7 @@ package ehb.multimedia.loans.controllers
 import ehb.multimedia.loans.dto.CreateLoan
 import ehb.multimedia.loans.models.Loan
 import ehb.multimedia.loans.services.LoanService
-import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import java.util.*
 
 @RestController
 @RequestMapping("loans")

@@ -1,7 +1,9 @@
 package ehb.multimedia.loans.services
 
 //import ehb.multimedia.loans.controllers.DatabaseController
+import ehb.multimedia.loans.models.Copy
 import ehb.multimedia.loans.models.Item
+import ehb.multimedia.loans.repositories.copyRepository
 import ehb.multimedia.loans.repositories.itemRepository
 import jakarta.persistence.EntityNotFoundException
 import org.apache.commons.logging.Log
@@ -9,7 +11,7 @@ import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class ItemService (val itemRepository: itemRepository) {
+class ItemService (val itemRepository: itemRepository, val copyRepository: copyRepository) {
 
     fun getItems(): List<Item> {
         return itemRepository.findAll()
@@ -18,6 +20,10 @@ class ItemService (val itemRepository: itemRepository) {
             println(item.name)
         }*/
     }
+
+    /*fun getCopies(): List<Copy> {
+        return copyRepository.findById()
+    }*/
 
     fun saveItem(item: Item): Item {
         return itemRepository.save(item)

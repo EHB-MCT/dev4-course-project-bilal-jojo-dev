@@ -5,6 +5,7 @@ import ehb.multimedia.loans.repositories.itemRepository
 import ehb.multimedia.loans.repositories.loanRepository
 import ehb.multimedia.loans.repositories.userRepository
 import org.springframework.stereotype.Service
+import java.util.*
 
 
 @Service
@@ -15,21 +16,26 @@ class LoanService(val loanRepository: loanRepository, val userRepository: userRe
     }
 
     fun saveLoan(createLoan: CreateLoan): Loan {
+        // Valideren of de gebruiker en het item bestaan voordat je de lening opslaat
+        //val userExists = userRepository.existsById(createLoan.userId)
+        //val itemExists = itemRepository.existsById(createLoan.itemId)
 
-        val userExists = userRepository.existsById(createLoan.userId)
-        val itemExists = itemRepository.existsById(createLoan.itemId)
+            val currentDate = Date()
+            val calendar = Calendar.getInstance()
+            calendar.time = currentDate
+            calendar.add(Calendar.DATE, 7)
+            val expirationDate = calendar.time
 
-        if (userExists && itemExists) {
             val loan = Loan(
                 itemId = createLoan.itemId,
                 userId = createLoan.userId,
-                date = createLoan.date,
-                expirationDate = createLoan.expirationDate
+                date = currentDate,
+                expirationDate = expirationDate
             )
             return loanRepository.save(loan)
-        } else {
+        /*} else {
             throw IllegalArgumentException("De opgegeven gebruiker of het item bestaat niet.")
-        }
+        }*/
     }
 }
 

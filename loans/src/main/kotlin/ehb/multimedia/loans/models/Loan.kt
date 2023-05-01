@@ -7,16 +7,21 @@ import java.util.Date
 
 @Entity
 @Table(name = "loans")
-data class Loan(
+class Loan(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
-    @Column(name = "item_id", nullable = false)
-    val itemId: Long,
-    @Column(name = "user_id", nullable = false)
-    val userId: Long,
-    @Column(name = "date")
     val date: Date,
-    @Column(name = "expiration_date")
-    val expirationDate: Date
-)
+    val expirationDate: Date,
+    @OneToOne
+    val itemId: Copy,
+    @OneToOne
+    val userId: User,
+
+    //@OneToOne var copyId: Copy,
+    //@OneToOne
+    //var userId: User
+) {
+
+
+}
