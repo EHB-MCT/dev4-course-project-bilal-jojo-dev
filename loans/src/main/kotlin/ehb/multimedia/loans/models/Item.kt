@@ -14,6 +14,4 @@ data class Item(
     val brand: String = "",
     @Column(name = "serial", nullable = false)
     val serial: Int = 0
-    ) {
-
-    }
+)

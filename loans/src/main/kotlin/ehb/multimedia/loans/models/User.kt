@@ -22,5 +22,4 @@ data class User (
     @Column(name = "phoneNr", nullable = false)
     val phoneNr: Int = 0,
 
-) {
-}
+    )
