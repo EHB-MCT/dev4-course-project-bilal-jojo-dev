@@ -1,6 +1,10 @@
 package ehb.multimedia.loans.dto
 
+import ehb.multimedia.loans.models.Copy
+import ehb.multimedia.loans.models.User
 import java.time.LocalDate
 import java.util.*
 
-data class CreateLoan(val itemId: Long, val userId: Long);
+
+data class CreateLoan(val itemId: Copy, val userId: User)
+

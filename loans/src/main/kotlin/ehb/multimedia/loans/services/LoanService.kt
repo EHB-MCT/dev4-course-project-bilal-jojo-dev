@@ -1,19 +1,11 @@
 package ehb.multimedia.loans.services
 import ehb.multimedia.loans.dto.CreateLoan
-import ehb.multimedia.loans.models.Item
 import ehb.multimedia.loans.models.Loan
-import ehb.multimedia.loans.models.User
 import ehb.multimedia.loans.repositories.itemRepository
 import ehb.multimedia.loans.repositories.loanRepository
 import ehb.multimedia.loans.repositories.userRepository
-import jakarta.persistence.EntityNotFoundException
 import org.springframework.stereotype.Service
-import java.time.ZoneId
-import java.sql.Date
-import java.time.LocalDate
 import java.util.*
-
-
 
 
 @Service
@@ -25,14 +17,13 @@ class LoanService(val loanRepository: loanRepository, val userRepository: userRe
 
     fun saveLoan(createLoan: CreateLoan): Loan {
         // Valideren of de gebruiker en het item bestaan voordat je de lening opslaat
-        val userExists = userRepository.existsById(createLoan.userId)
-        val itemExists = itemRepository.existsById(createLoan.itemId)
+        //val userExists = userRepository.existsById(createLoan.userId)
+        //val itemExists = itemRepository.existsById(createLoan.itemId)
 
-        if (userExists && itemExists) {
             val currentDate = Date()
             val calendar = Calendar.getInstance()
             calendar.time = currentDate
-            calendar.add(Calendar.DATE, 30)
+            calendar.add(Calendar.DATE, 7)
             val expirationDate = calendar.time
 
             val loan = Loan(
@@ -42,9 +33,9 @@ class LoanService(val loanRepository: loanRepository, val userRepository: userRe
                 expirationDate = expirationDate
             )
             return loanRepository.save(loan)
-        } else {
+        /*} else {
             throw IllegalArgumentException("De opgegeven gebruiker of het item bestaat niet.")
-        }
+        }*/
     }
 }
 
