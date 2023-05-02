@@ -4,18 +4,18 @@ import jakarta.persistence.*
 
 @Entity
 @Table(name = "copies")
-data class Copy (
+class Copy (
     @Id
     @GeneratedValue
     val id: Int = 0,
-    val name: String = "",
-    val serial: Int = 0,
+    val name: String,
+    val serial: Int,
     val status: Boolean,
-    val remarks: String = "",
+    val remarks: String,
     @ManyToOne
     val item: Item
 
         ) {
-    constructor(name: String, serial: Int, status: Boolean, remarks: String, item: Item) : this(0, name, serial, status, remarks, item)
+    // constructor(name: String, serial: Int, status: Boolean, remarks: String, item: Item) : this(0, name, serial, status, remarks, item)
 
 }

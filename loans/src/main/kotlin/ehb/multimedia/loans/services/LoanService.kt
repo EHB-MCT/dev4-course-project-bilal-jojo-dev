@@ -1,6 +1,7 @@
 package ehb.multimedia.loans.services
 import ehb.multimedia.loans.dto.CreateLoan
 import ehb.multimedia.loans.models.Loan
+import ehb.multimedia.loans.repositories.copyRepository
 import ehb.multimedia.loans.repositories.itemRepository
 import ehb.multimedia.loans.repositories.loanRepository
 import ehb.multimedia.loans.repositories.userRepository
@@ -9,7 +10,7 @@ import java.util.*
 
 
 @Service
-class LoanService(val loanRepository: loanRepository, val userRepository: userRepository, val itemRepository: itemRepository) {
+class LoanService(val loanRepository: loanRepository, val userRepository: userRepository, val itemRepository: itemRepository, val copyRepository: copyRepository) {
 
     fun getLoans(): List<Loan> {
         return loanRepository.findAll()
@@ -20,6 +21,9 @@ class LoanService(val loanRepository: loanRepository, val userRepository: userRe
         //val userExists = userRepository.existsById(createLoan.userId)
         //val itemExists = itemRepository.existsById(createLoan.itemId)
 
+        val item = copyRepository.findById(createLoan.itemId)
+        val user = userRepository.findById(createLoan.userId)
+
             val currentDate = Date()
             val calendar = Calendar.getInstance()
             calendar.time = currentDate
@@ -27,8 +31,8 @@ class LoanService(val loanRepository: loanRepository, val userRepository: userRe
             val expirationDate = calendar.time
 
             val loan = Loan(
-                itemId = createLoan.itemId,
-                userId = createLoan.userId,
+                itemId = item,
+                userId = user,
                 date = currentDate,
                 expirationDate = expirationDate
             )

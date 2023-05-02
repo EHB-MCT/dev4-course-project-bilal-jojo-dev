@@ -10,7 +10,7 @@ import java.util.Date
 class Loan(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    val id: Int = 0,
     val date: Date,
     val expirationDate: Date,
     @OneToOne

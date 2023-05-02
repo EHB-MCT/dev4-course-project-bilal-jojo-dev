@@ -7,9 +7,9 @@ import jakarta.persistence.*
 data class Item(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-var id: Int = 0,
-var name: String = "",
-var brand: String = "",
+var id: Int,
+var name: String,
+var brand: String,
 /*@Column(name = "serial", nullable = false)
 val serial: Int = 0*/
 ) {
