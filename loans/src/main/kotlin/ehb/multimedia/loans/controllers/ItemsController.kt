@@ -2,11 +2,8 @@ package ehb.multimedia.loans.controllers
 
 import ehb.multimedia.loans.models.Item
 import ehb.multimedia.loans.services.ItemService
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
+@CrossOrigin
 
 
 @RestController
@@ -24,4 +21,6 @@ class ItemsController (val itemService: ItemService) {
     }
 
 }
+
+
 
