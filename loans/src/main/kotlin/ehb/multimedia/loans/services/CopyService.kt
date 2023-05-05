@@ -5,6 +5,7 @@ import ehb.multimedia.loans.models.Copy
 import ehb.multimedia.loans.models.Item
 import ehb.multimedia.loans.repositories.copyRepository
 import ehb.multimedia.loans.repositories.itemRepository
+import ehb.multimedia.loans.services.ItemService
 import org.springframework.stereotype.Service
 
 @Service
@@ -29,5 +30,34 @@ class CopyService(val copyRepository: copyRepository, val itemRepository: itemRe
         )
 
         return copyRepository.save(copy)
+    }
+
+    fun getCopyById(id: Int): Copy {
+        val copyEnt = copyRepository.findById(id)
+
+        return copyEnt
+    }
+
+    fun deleteCopy(id: Long) {
+        return copyRepository.deleteById(id)
+    }
+
+    fun updateCopy(copy: Copy, createCopy: CreateCopy): Copy {
+
+        val copyEntity = copyRepository.findById(copy.id)
+        val itemEntity = itemRepository.findById(createCopy.Item)
+
+
+        val copyData = Copy(
+                id = copyEntity.id,
+                name = copyEntity.name,
+                serial = copyEntity.serial,
+                status = copyEntity.status,
+                remarks = copyEntity.remarks,
+                item = itemEntity.copy(id = itemEntity.id)
+        )
+
+        return copyRepository.save(copyData)
+
     }
 }

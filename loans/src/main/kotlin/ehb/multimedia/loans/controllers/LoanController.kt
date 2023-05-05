@@ -5,6 +5,7 @@ import ehb.multimedia.loans.models.Loan
 import ehb.multimedia.loans.services.LoanService
 import org.springframework.web.bind.annotation.*
 
+@CrossOrigin
 @RestController
 @RequestMapping("loans")
 class LoansController(val loanService: LoanService) {
