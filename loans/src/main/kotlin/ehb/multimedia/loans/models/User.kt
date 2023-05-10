@@ -16,6 +16,11 @@ class User (
     val role: String,
     val phoneNr: Int
 )
+{
+    var accessToken: String = ""
+    var expirationDate: Long = System.currentTimeMillis()
+}
+
 
 
 
