@@ -1,17 +1,21 @@
 <template>
-    <div class="items">
-      <Items />
-    </div>
-  </template>
-  
-  <script setup>
-  import Items from '../components/Items.vue'
-  </script>
-  
-  <style scoped>
-  .items {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+  <div>
+    <Items />
+    <Users />
+  </div>
+</template>
+
+<script>
+import Items from '../components/Items.vue';
+import Users from '../components/Users.vue';
+
+export default {
+  components: {
+    Items,
+    Users
   }
-  </style>
+}
+</script>
+
+
+

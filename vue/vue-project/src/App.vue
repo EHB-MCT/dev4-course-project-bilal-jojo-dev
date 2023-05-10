@@ -5,6 +5,9 @@
         <li>
           <router-link to="/items">Items</router-link>
         </li>
+        <li>
+          <router-link to="/users">Users</router-link>
+        </li>
       </ul>
     </nav>
     <router-view></router-view>
@@ -33,3 +36,4 @@ nav li a {
   color: white;
 }
 </style>
+
