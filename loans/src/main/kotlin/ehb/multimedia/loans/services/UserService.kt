@@ -1,4 +1,5 @@
 package ehb.multimedia.loans.services
+import ehb.multimedia.loans.dto.CreateUser
 import ehb.multimedia.loans.dto.LoginUserRequest
 import ehb.multimedia.loans.models.User
 import ehb.multimedia.loans.repositories.userRepository
@@ -15,8 +16,18 @@ class UserService(val userRepository: userRepository) {
         return userRepository.findAll()
     }
 
-    fun saveUser(user: User): User {
-        return userRepository.save(user)
+    fun saveUser(user: CreateUser): User {
+
+        val userInfo = User(
+                firstName = user.firstName,
+                lastName = user.lastName,
+                email = user.email,
+                password = user.password,
+                role = user.role,
+                phoneNr = user.phoneNr
+        )
+
+        return userRepository.save(userInfo)
     }
 
     fun loginUser(userRequest: LoginUserRequest): String? {

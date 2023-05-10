@@ -1,5 +1,6 @@
 package ehb.multimedia.loans.controllers
 
+import ehb.multimedia.loans.dto.CreateUser
 import ehb.multimedia.loans.dto.LoginUserRequest
 import ehb.multimedia.loans.models.User
 //import ehb.multimedia.loans.services.EmailService
@@ -35,7 +36,7 @@ class UsersController (val userService: UserService) {
 
 
     @PostMapping("")
-    fun saveUser(@RequestBody user: User): User {
+    fun saveUser(@RequestBody user: CreateUser): User {
         // Registreer de nieuwe gebruiker
         val newUser = userService.saveUser(user)
 
