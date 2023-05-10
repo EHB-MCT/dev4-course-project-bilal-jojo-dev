@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*
 @CrossOrigin
 @RestController
 @RequestMapping("loans")
-class LoansController(val loanService: LoanService) {
+class LoanController(val loanService: LoanService) {
 
     @GetMapping("")
     fun getAllLoans(): List<Loan> {
