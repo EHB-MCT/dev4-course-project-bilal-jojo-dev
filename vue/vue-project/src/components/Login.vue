@@ -1,7 +1,7 @@
 <template>
     <div class="login">
       <h2>Login</h2>
-      <form @submit.prevent="submitForm">
+      <form @submit.prevent="login">
         <div>
           <label for="mail">Mail:</label>
           <input type="text" id="mail" v-model="mail">
@@ -11,6 +11,7 @@
           <input type="password" id="password" v-model="password">
         </div>
         <button type="submit">Login</button>
+        <p v-if="errorMessage">{{ errorMessage }}</p>
       </form>
     </div>
   </template>
@@ -21,12 +22,37 @@
       return {
         mail: '',
         password: '',
+        errorMessage: '',
       }
     },
     methods: {
-      submitForm() {
-        console.log('Form submitted:', { mail: this.mail, password: this.password });
-      }
+      async login() {
+        try {
+          const response = await fetch('http://localhost:8080/users/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              email: this.mail,
+              password: this.password,
+            }),
+          });
+  
+          if (!response.ok) {
+            throw new Error('Inloggen mislukt');
+          }
+  
+          const data = await response.text();
+  
+          localStorage.setItem('authToken', data);
+  
+          this.$router.push('/items');
+        } catch (error) {
+          this.errorMessage = 'Er is een fout opgetreden bij het inloggen. Controleer uw e-mail en wachtwoord en probeer het opnieuw.';
+          console.error('Er is een fout opgetreden bij het inloggen:', error);
+        }
+      },
     }
   }
   </script>
