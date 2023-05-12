@@ -11,39 +11,44 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      users: []
-    }
-  },
-  methods: {
-    async getData() {
-      try {
-        const token = localStorage.getItem('authToken');
-        const response = await fetch('http://localhost:8080/users', {
-          method: 'GET',
-          headers: {
-            'Authorization': token,
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch users');
-        }
-
-        const data = await response.json();
-        this.users = data;
-      } catch (error) {
-        console.error('Er is een fout opgetreden bij het ophalen van gebruikers:', error);
+    export default {
+      data() {
+      return {
+        users: []
       }
-    }
-  },
-  mounted() {
-    this.getData();
+    },
+
+    mounted() {
+  const authToken = localStorage.getItem('authToken');
+  if (!authToken) {
+    console.error('User is not authenticated');
+    return;
   }
-}
-</script>
+
+  fetch('http://localhost:8080/users', {
+    headers: {
+      'Authorization': authToken,
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      // Store response data in component's data object
+      this.users = data;
+      console.log(data);
+    })
+    .catch(error => {
+      // Handle any errors that occur during the API request
+      console.error(error);
+    });
+},
+
+
+    updated() {
+      // Check that users data is being properly stored in component's data object
+      console.log(this.users);
+    }
+  }
+  </script>
 
 <style scoped>
 h3 {
