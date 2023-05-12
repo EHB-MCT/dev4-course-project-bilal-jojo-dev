@@ -23,7 +23,7 @@ export default {
       mail: '',
       password: '',
       errorMessage: '',
-      token: '847440d8-40f3-4467-ac7d-bac8436c9551'
+      token: '0e0764b3-d171-4868-a845-d031a73ddbeb'
     }
   },
   methods: {
