@@ -8,6 +8,9 @@
         <li v-if="isLoggedIn">
           <router-link to="/users">Users</router-link>
         </li>
+        <li v-if="isLoggedIn">
+          <router-link to="/loan">Loan</router-link>
+        </li>
         <li v-if="!isLoggedIn">
           <router-link to="/login">Login</router-link>
         </li>
