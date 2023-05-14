@@ -23,7 +23,7 @@ export default {
       mail: '',
       password: '',
       errorMessage: '',
-      token: '847440d8-40f3-4467-ac7d-bac8436c9551'
+      authToken: ''
     }
   },
   methods: {
@@ -32,7 +32,7 @@ export default {
         const response = await fetch('http://localhost:8080/users/login', {
           method: 'POST',
           headers: {
-            'Authorization': this.token,
+            'Authorization': this.authToken,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
@@ -47,34 +47,47 @@ export default {
 
         const data = await response.text();
 
-        localStorage.setItem('authToken', data);
+        this.authToken = data;
+        localStorage.setItem('authToken', this.authToken);
+        console.log(localStorage)
 
         this.$router.push('/items');
       } catch (error) {
         this.errorMessage = 'Er is een fout opgetreden bij het inloggen. Controleer uw e-mail en wachtwoord en probeer het opnieuw.';
         console.error('Er is een fout opgetreden bij het inloggen:', error);
       }
-    },
+    }
+  },
+  mounted() {
+    this.authToken = localStorage.getItem('authToken');
+    console.log('Access token: ' , this.authToken)
   }
 }
 </script>
 
 <style scoped>
 .login {
-  width: 300px;
+  width: 100%;
   margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
+  padding: 20px 0 20px 0;
   background-color: #f9f9f9;
+  box-sizing: border-box;
 }
 
 .login input {
   width: 100%;
-  margin: 5px 0;
+  margin: 12px 0;
+  padding: 12px 6px;
+  font-size: 16px;
 }
 
 .login button {
   margin-top: 10px;
+  border: none;
+  background-color: cornflowerblue;
+  color: #eee;
+  padding: 12px 24px;
+  font-size: 16px;
 }
 </style>
   

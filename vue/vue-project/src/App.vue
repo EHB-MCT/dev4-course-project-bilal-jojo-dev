@@ -1,5 +1,7 @@
 
 <template>
+  <head>
+  </head>
   <div id="app">
     <nav>
       <ul>
@@ -59,6 +61,7 @@ nav ul {
 nav li {
   display: inline;
   margin-right: 1rem;
+  color: #eee;
 }
 
 nav li a {
