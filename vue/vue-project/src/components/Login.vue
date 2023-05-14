@@ -23,16 +23,15 @@ export default {
       mail: '',
       password: '',
       errorMessage: '',
-      token: '0e0764b3-d171-4868-a845-d031a73ddbeb'
-    }
-  },
+      authToken: ''
+  }},
   methods: {
     async login() {
       try {
         const response = await fetch('http://localhost:8080/users/login', {
           method: 'POST',
           headers: {
-            'Authorization': this.token,
+            'Authorization': this.authToken,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
@@ -47,21 +46,27 @@ export default {
 
         const data = await response.text();
 
-        localStorage.setItem('authToken', data);
+        this.authToken = data;
+        localStorage.setItem('authToken', this.authToken);
+        console.log(localStorage)
 
         this.$router.push('/items');
       } catch (error) {
         this.errorMessage = 'Er is een fout opgetreden bij het inloggen. Controleer uw e-mail en wachtwoord en probeer het opnieuw.';
         console.error('Er is een fout opgetreden bij het inloggen:', error);
       }
-    },
+    }
+  },
+  mounted() {
+    this.authToken = localStorage.getItem('authToken');
+    console.log('Access token: ' , this.authToken)
   }
 }
 </script>
 
 <style scoped>
 .login {
-  width: 300px;
+  width: 100%;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #00BCD4;
