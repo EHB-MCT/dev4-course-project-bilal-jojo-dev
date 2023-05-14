@@ -3,7 +3,7 @@
     <h3>
       <ul>
         <li v-for="user in users" :key="user.id">
-          {{ user.email }} - {{ user.password }}
+          {{ user.firstName }} - {{ user.lastName }} - {{ user.email }}
         </li>
       </ul>
     </h3>

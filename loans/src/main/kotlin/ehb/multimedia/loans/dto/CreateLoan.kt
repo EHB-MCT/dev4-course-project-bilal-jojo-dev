@@ -6,5 +6,5 @@ import java.time.LocalDate
 import java.util.*
 
 
-data class CreateLoan(val itemId: Int, val userId: Int)
+data class CreateLoan(val itemId: Int, val userId: Int, val startDate: LocalDate, val endDate: LocalDate)
 
