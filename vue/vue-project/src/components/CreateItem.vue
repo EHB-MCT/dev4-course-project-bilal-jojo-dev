@@ -9,41 +9,91 @@
   
         <button type="submit">Create Item</button>
       </form>
+  
+      <form @submit.prevent="createCopy">
+        <label for="copyName">Copy Name:</label>
+        <input type="text" id="copyName" v-model="copyName">
+  
+        <label for="copyRemarks">Copy Remarks:</label>
+        <input type="text" id="copyRemarks" v-model="copyRemarks">
+  
+        <label for="copyStatus">Copy Status:</label>
+        <input type="checkbox" id="copyStatus" v-model="copyStatus">
+  
+        <label for="copySerial">Copy Serial:</label>
+        <input type="number" id="copySerial" v-model="copySerial">
+  
+        <label for="itemId">Item ID:</label>
+        <input type="number" id="itemId" v-model="itemId">
+  
+        <button type="submit">Create Copy</button>
+      </form>
     </div>
   </template>
   
   <script>
-  export default {
-    data() {
-      return {
-        name: '',
-        brand: '',
+export default {
+  data() {
+    return {
+      name: '',
+      brand: '',
+      copyName: '',
+      copyRemarks: '',
+      copyStatus: true,
+      copySerial: 123,
+      itemId: 1,
+    };
+  },
+  methods: {
+    async createItem() {
+      try {
+        const response = await fetch('http://localhost:8080/items', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: this.name,
+            brand: this.brand,
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log(data);  
+      } catch (error) {
+        console.error('Error:', error);
       }
     },
-    methods: {
-        async createItem() {
-  try {
-    const response = await fetch('http://localhost:8080/items', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name: this.name,
-        brand: this.brand,
-      }),
-    });
+    async createCopy() {
+      try {
+        const response = await fetch('http://localhost:8080/copy', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: this.copyName,
+            remarks: this.copyRemarks,
+            status: this.copyStatus,
+            serial: this.copySerial,
+            Item: this.itemId,
+          }),
+        });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
-    const data = await response.json();
-    console.log(data);  
-  } catch (error) {
-    console.error('Error:', error);
-  }
-},
+        const data = await response.json();
+        console.log(data);  
+      } catch (error) {
+        console.error('Error:', error);
+      }
     },
-  }
-  </script>
+  },
+};
+</script>
