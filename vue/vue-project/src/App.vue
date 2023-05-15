@@ -11,6 +11,9 @@
         <li v-if="isLoggedIn">
           <router-link to="/loan">Loan</router-link>
         </li>
+        <li v-if="isLoggedIn">
+          <router-link to="/CreateItem">CreateItem</router-link>
+        </li>
         <li v-if="!isLoggedIn">
           <router-link to="/login">Login</router-link>
         </li>
