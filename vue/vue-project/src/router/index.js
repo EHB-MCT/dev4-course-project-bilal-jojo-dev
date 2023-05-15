@@ -29,7 +29,7 @@ const router = createRouter({
     {
       path: '/loan',
       name: 'loan',
-      component: LoanView
+      component: LoanView 
     }
   ]
 });

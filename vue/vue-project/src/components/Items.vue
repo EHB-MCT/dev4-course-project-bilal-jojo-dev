@@ -18,7 +18,7 @@
           <button class="loan-btn" :disabled="true">Reserveer</button>
         </h6>
         <h6 v-if="copy.status == false">
-          <button class="loan-btn" @click="reserve(copy)">Reserveer</button>
+          <button class="loan-btn" @click="reserve(copy.id)">Reserveer</button>
         </h6>
       </div>
     </h3>
@@ -41,7 +41,8 @@ export default {
       this.copies = data;
     },
     reserve(copy) {
-      this.reserveItem(copy); //
+      localStorage.setItem('itemId', JSON.stringify(copy));
+      this.reserveItem(copy); 
     }
   },
   mounted() {
