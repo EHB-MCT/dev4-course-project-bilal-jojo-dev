@@ -47,6 +47,7 @@ export default {
         const data = await response.text();
 
         this.authToken = data;
+        console.log(data)
         localStorage.setItem('authToken', this.authToken);
         console.log(localStorage)
 

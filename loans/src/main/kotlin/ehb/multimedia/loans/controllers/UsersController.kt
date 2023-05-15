@@ -23,10 +23,11 @@ import org.springframework.http.HttpHeaders
 //set userRepository as class parameter
 class UsersController (val userService: UserService) {
 
-    @GetMapping("")
-    fun getAllUsers(@RequestHeader(HttpHeaders.AUTHORIZATION) token: String): List<User> {
-        if (userService.isAuthenticated(token)) {
-            return userService.getUsers()
+    @GetMapping()
+    fun getAllUsers(@RequestHeader(name = HttpHeaders.AUTHORIZATION, required = false) token: String?): List<User> {
+        if (token != null && userService.isAuthenticated(token)) {
+            val users = userService.getUsers();
+            return users
         } else {
             throw ResponseStatusException(HttpStatus.UNAUTHORIZED, "Authentication token not present or accepted")
         }

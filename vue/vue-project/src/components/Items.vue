@@ -3,45 +3,60 @@
   <div>
     <h3>
       <div class="copy bold">
-          <h6>Serial</h6>
-          <h6>Exemplaar</h6> 
-          <h6>Item</h6>
-          <h6>Brand</h6>
-          <h6>Beschikbaar</h6>
-          <h6>Reserveer</h6>
-        </div>
-        <div class="copy" v-for="copy in copies" :key="copy.id">
-          <h6>{{ copy.serial }}</h6>
-          <h6>{{ copy.name }}</h6> 
-          <h6>{{ copy.item.name }}</h6> 
-          <h6>{{ copy.item.brand }}</h6>
-          <h6 v-if="copy.status == true"><font-awesome-icon icon="fa-solid fa-xmark" class="red" /></h6>
-          <h6 v-if="copy.status == false"><font-awesome-icon icon="fa-solid fa-check" class="green"/></h6>
-          <h6 v-if="copy.status == true"><button class="loan-btn" disabled>Reserveer</button></h6>
-          <h6 v-if="copy.status == false"><button class="loan-btn">Reserveer</button></h6>
-        </div>
+        <h6>Serial</h6>
+        <h6>Exemplaar</h6>
+        <h6>Item</h6>
+        <h6>Brand</h6>
+        <h6>Beschikbaar</h6>
+        <h6>Reserveer</h6>
+      </div>
+      <div class="copy" v-for="copy in copies" :key="copy.id">
+        <h6>{{ copy.serial }}</h6>
+        <h6>{{ copy.name }}</h6>
+        <h6>{{ copy.item.name }}</h6>
+        <h6>{{ copy.item.brand }}</h6>
+        <h6 v-if="copy.status == true">
+          <font-awesome-icon icon="fa-solid fa-xmark" class="red" />
+        </h6>
+        <h6 v-if="copy.status == false">
+          <font-awesome-icon icon="fa-solid fa-check" class="green" />
+        </h6>
+        <h6 v-if="copy.status == false">
+          <button class="loan-btn" @click="reserve(copy.id)">Reserveer</button>
+        </h6>
+        <h6 v-if="copy.status == true">
+          <button class="loan-btn" @click="reserve(copy.id)" disabled>Reserveer</button>
+        </h6>
+      </div>
     </h3>
   </div>
 </template>
 
 <script>
 export default {
+  props: ['reserveItem'], 
+
   data() {
     return {
       copies: []
-    }
+    };
   },
   methods: {
     async getData() {
       const response = await fetch("http://localhost:8080/copy");
       const data = await response.json();
       this.copies = data;
+    },
+    reserve(key) {
+      localStorage.setItem('itemId', key);
+      this.reserveItem(); //
     }
   },
   mounted() {
     this.getData();
+    console.log(localStorage)
   }
-}
+};
 </script>
 
 <style scoped>

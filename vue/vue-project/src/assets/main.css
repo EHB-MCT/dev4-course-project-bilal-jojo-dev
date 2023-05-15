@@ -9,7 +9,7 @@
 }
 
 div#app {
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -36,6 +36,7 @@ a
   }
 
   #app {
+    width: 80%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
