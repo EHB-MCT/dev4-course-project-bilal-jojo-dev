@@ -1,19 +1,16 @@
 package ehb.multimedia.loans.controllers
 
+//import ehb.multimedia.loans.services.EmailService
+
+
 import ehb.multimedia.loans.dto.CreateUser
 import ehb.multimedia.loans.dto.LoginUserRequest
 import ehb.multimedia.loans.models.User
-//import ehb.multimedia.loans.services.EmailService
 import ehb.multimedia.loans.services.UserService
+import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
-
-
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
-import org.springframework.http.HttpHeaders
 
 
 @CrossOrigin
@@ -42,9 +39,9 @@ class UsersController (val userService: UserService) {
         val newUser = userService.saveUser(user)
 
         // Stuur een welkomst e-mail naar de nieuwe gebruiker
-        //al to = newUser.email
-        //val subject = "Welkom bij onze applicatie"
-        //val text = "Beste ${newUser.firstName} ${newUser.lastName},\n\nBedankt voor je registratie"
+        val to = newUser.email
+        val subject = "Welkom bij onze applicatie"
+        val text = "Beste ${newUser.firstName} ${newUser.lastName},\n\nBedankt voor je registratie"
 
         //emailService.sendEmail(to, subject, text)
 

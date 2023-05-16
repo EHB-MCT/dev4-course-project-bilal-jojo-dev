@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="role == 'admin'">
     <h3>
       <ul>
         <li v-for="user in users" :key="user.id">
@@ -14,7 +14,8 @@
     export default {
       data() {
       return {
-        users: []
+        users: [],
+        role: localStorage.getItem('role')
       }
     },
 

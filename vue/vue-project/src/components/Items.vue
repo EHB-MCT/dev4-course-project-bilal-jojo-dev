@@ -9,6 +9,7 @@
         <h6>Brand</h6>
         <h6>Beschikbaar</h6>
         <h6>Reserveer</h6>
+        <h6 v-if="role == 'admin'">Delete</h6>
       </div>
       <div class="copy" v-for="copy in copies" :key="copy.id">
         <h6>{{ copy.serial }}</h6>
@@ -27,6 +28,7 @@
         <h6 v-if="copy.status == true">
           <button class="loan-btn" @click="reserve(copy.id)" disabled>Reserveer</button>
         </h6>
+        <h6 v-if="role == 'admin'"><button class="loan-btn btn-red" @click="deleteItem(copy.id)"><font-awesome-icon icon="fa-solid fa-trash" /></button></h6>
       </div>
     </h3>
   </div>
@@ -38,10 +40,43 @@ export default {
 
   data() {
     return {
-      copies: []
+      copies: [],
+      role: '',
+      itemDelete: ''
     };
   },
   methods: {
+
+
+    async isAdmin() {
+
+      const userResponse = await fetch('http://localhost:8080/users', {
+            headers: {
+            "Content-Type": "application/json",
+            'Authorization': localStorage.getItem('authToken')
+            }
+            });
+
+            //The code takes in a response object from an API call, sorts the data by user ID, and checks if the user with the highest ID exists in the data.
+            const userData = await userResponse.json();
+            console.log('User data:', userData);
+            //If the data is not an array or has no elements, the code logs an error message and returns undefined.
+
+            const desiredAccessToken = localStorage.getItem('authToken')
+
+            for (const user of userData) {
+                if (user.accessToken === desiredAccessToken) {
+                    console.log(`User is ${user.id}`);
+                    this.role = user.role
+                    console.log(this.role)
+                    localStorage.setItem('role', this.role)
+                    break;
+                }
+                // console.log(`users: ${user.id}`)
+            }
+
+    },
+
     async getData() {
       const response = await fetch("http://localhost:8080/copy");
       const data = await response.json();
@@ -50,10 +85,23 @@ export default {
     reserve(key) {
       localStorage.setItem('itemId', key);
       this.reserveItem(); //
+    },
+
+    async deleteItem(id) {
+
+        const deleteResp = await fetch(`http://localhost:8080/copy/${id}`, {
+          method: 'DELETE',
+        });
+
+        // const deleteData = await deleteResp.json();
+        this.getData()
+
+      console.log(id)
     }
   },
   mounted() {
     this.getData();
+    this.isAdmin();
     console.log(localStorage)
   }
 };
@@ -116,5 +164,15 @@ button.loan-btn:disabled {
 
 .bold h6 {
   font-weight: 800 !important;
+}
+
+.btn-red {
+  background-color: rgb(231, 27, 27);
+  color: #eee;
+  border: 1px solid rgb(231, 27, 27);
+}
+
+.btn-red:hover {
+  background-color: rgb(231, 27, 27);
 }
 </style>

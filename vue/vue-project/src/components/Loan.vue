@@ -1,5 +1,5 @@
 <template>
-    <div class="loan">
+    <div class="loan" v-if="role == 'admin'">
         <h2>Loan</h2>
         <form @submit.prevent="reservation">
             <div>
@@ -10,6 +10,7 @@
             </div>
             <button type="submit">Reserve</button>
             <p v-if="errorMessage">{{ errorMessage }}</p>
+            <h1 v-if="role == 'admin'">This is an admin</h1>
         </form>
     </div>
 </template>
@@ -23,7 +24,8 @@ export default {
             errorMessage: '',
             accesstoken: localStorage.getItem('authToken'),
             ItemId: localStorage.getItem('itemId'),
-            userId: ''
+            userId: '',
+            role: localStorage.getItem('role')
         };
     },
     methods: {
@@ -47,6 +49,8 @@ export default {
                 if (user.accessToken === desiredAccessToken) {
                     console.log(`User is ${user.id}`);
                     this.userId = user.id
+                    this.role = user.role
+                    console.log(this.role)
                     break;
                 }
                 // console.log(`users: ${user.id}`)

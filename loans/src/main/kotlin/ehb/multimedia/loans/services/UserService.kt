@@ -1,10 +1,11 @@
 package ehb.multimedia.loans.services
+
 import ehb.multimedia.loans.dto.CreateUser
 import ehb.multimedia.loans.dto.LoginUserRequest
 import ehb.multimedia.loans.models.User
 import ehb.multimedia.loans.repositories.userRepository
-import jakarta.persistence.EntityNotFoundException
-
+import ehb.multimedia.loans.strategy.ConfirmationUser
+import ehb.multimedia.loans.strategy.EmailStrat
 import org.springframework.stereotype.Service
 import java.util.*
 
@@ -26,9 +27,18 @@ class UserService(val userRepository: userRepository) {
             phoneNr = user.phoneNr
         )
 
+        val confirmationEmailStrategy: EmailStrat = ConfirmationUser()
+        userInfo.email.let {
+            println(userInfo.email)
+            println("Sending reservation confirmation email...")
+            confirmationEmailStrategy.sendEmail(
+                    emailTo = it,
+                    subject = "Registration",
+                    message = "You've created an account with email adress ${userInfo.email}"
+            )
+        }
+
         return userRepository.save(userInfo)
-
-
 
     }
 
