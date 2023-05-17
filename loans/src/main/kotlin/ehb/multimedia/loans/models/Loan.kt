@@ -1,18 +1,25 @@
 package ehb.multimedia.loans.models
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.Id
-import jakarta.persistence.Table
-import java.util.Date
-/*
+import jakarta.persistence.*
+
+
 @Entity
 @Table(name = "loans")
-class Loan {
+class Loan(
     @Id
-    @GeneratedValue
-    val id: Int = 0
-    val userId: Int = 0
-    var date: Date = Date()
-    var expirationDate: Date = Date()
-}*/
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Int = 0,
+    val date: String,
+    val expirationDate: String,
+    @OneToOne
+    val itemId: Copy,
+    @OneToOne
+    val userId: User,
+
+    //@OneToOne var copyId: Copy,
+    //@OneToOne
+    //var userId: User
+) {
+
+
+}
