@@ -11,7 +11,7 @@
           <router-link to="/users">Users</router-link>
         </li>
         <li v-if="isLoggedIn && role == 'admin'">
-          <router-link to="/loan">Loans</router-link>
+          <router-link to="/getLoans">Loans</router-link>
         </li>
         <li v-if="!isLoggedIn">
           <router-link to="/login">Login</router-link>

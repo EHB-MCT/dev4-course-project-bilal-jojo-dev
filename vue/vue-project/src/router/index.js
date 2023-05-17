@@ -4,7 +4,8 @@ import UsersView from '../views/UsersView.vue';
 import Login from '../components/Login.vue';
 import LoanView from '../views/LoanView.vue';
 import RegisterView from '../views/RegisterView.vue';
-import CreateItemView from '../views/CreateItemView.vue'
+import CreateItemView from '../views/CreateItemView.vue';
+import GetLoansView from '../views/GetLoansView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,6 +43,11 @@ const router = createRouter({
       path: '/CreateItem',
       name: 'createItem',
       component: CreateItemView
+    },
+    {
+      path: '/getLoans',
+      name: 'getLoans',
+      component: GetLoansView
     },
   ]
 });

@@ -28,15 +28,17 @@ class UserService(val userRepository: userRepository) {
         )
 
         val confirmationEmailStrategy: EmailStrat = ConfirmationUser()
+
+        /* TODO: Design pattern is here but its integration affects the return save user.
         userInfo.email.let {
             println(userInfo.email)
-            println("Sending reservation confirmation email...")
+            println("Registration complete for ${userInfo.firstName} ${userInfo.lastName} with email adress ${userInfo.email}")
             confirmationEmailStrategy.sendEmail(
                     emailTo = it,
                     subject = "Registration",
                     message = "You've created an account with email adress ${userInfo.email}"
             )
-        }
+        }*/
 
         return userRepository.save(userInfo)
 
