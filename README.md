@@ -2,7 +2,7 @@
 ## Medialab Loan Application
 Medialab loan application lets user reserve an item from the medialab. Users create an account and are directed to a page compiling all items.
 
-Admins can also log on and add new items and copies of said items. They can also view all users and loans. Admins are also 
+Admins can also log on and add new items and copies of said items. They can also view all users and loans.
 ## Authors
 
 - [Joachim Hamraoui](https://github.com/JoachimHamraoui)
